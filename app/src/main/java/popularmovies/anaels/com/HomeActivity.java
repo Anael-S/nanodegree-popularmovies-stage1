@@ -5,19 +5,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import popularmovies.anaels.com.api.ApiService;
 import popularmovies.anaels.com.api.model.Movie;
-import popularmovies.anaels.com.helper.FavoriteHelper;
 import popularmovies.anaels.com.helper.ScreenHelper;
 
 public class HomeActivity extends AppCompatActivity {
@@ -95,12 +91,6 @@ public class HomeActivity extends AppCompatActivity {
                 item.setTitle(getString(R.string.menu_sortby, getDisplayFilterName()));
                 return true;
             case R.id.favorites:
-                if (movieAdapter == null) {
-                    initRecyclerView(FavoriteHelper.getFavorite(this));
-                } else {
-                    movieAdapter.setListMovies(FavoriteHelper.getFavorite(this));
-                    movieAdapter.notifyDataSetChanged();
-                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
